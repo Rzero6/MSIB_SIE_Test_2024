@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tes.msib.models.entities.Lokasi;
 import com.tes.msib.models.entities.Proyek;
 import com.tes.msib.services.ProyekService;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -30,6 +31,11 @@ public class ProyekController {
     @GetMapping
     public Iterable<Proyek> findAll() {
         return proyekService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Proyek findById(@PathVariable("id") Integer id) {
+        return proyekService.findOne(id);
     }
 
     @PutMapping("/{id}")

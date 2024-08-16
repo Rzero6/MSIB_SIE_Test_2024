@@ -18,8 +18,7 @@ import com.tes.msib.services.LokasiService;
 @RestController
 @RequestMapping("/api/lokasi")
 public class LokasiController {
-    
-    
+
     @Autowired
     private LokasiService lokasiService;
 
@@ -31,6 +30,11 @@ public class LokasiController {
     @GetMapping
     public Iterable<Lokasi> findAll() {
         return lokasiService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Lokasi findById(@PathVariable("id") Integer id) {
+        return lokasiService.findOne(id);
     }
 
     @PutMapping("/{id}")
